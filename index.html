@@ -1,511 +1,320 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bu Ranti Hastuti - Guru Profesional</title>
-    <!-- Font Premium: Outfit (Modern) & Playfair Display (Elegan) -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-    <!-- Icon Pack -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Aisyah Humaira, S.Pd. | Pendidik Muda Indonesia</title>
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts: DM Serif Display (Headings) & Quicksand (Body/Friendly) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'edu-green': '#4A6C58', /* Sage Green - Elegan & Akademis */
+                        'edu-light': '#E8EFEA',
+                        'soft-cream': '#FDFBF7',
+                        'terracotta': '#C88D79', /* Aksen hangat */
+                        'text-dark': '#2D3436'
+                    },
+                    fontFamily: {
+                        serif: ['"DM Serif Display"', 'serif'],
+                        sans: ['"Quicksand"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        :root {
-            /* Palette Baru: Education Blue (Tenang & Terpercaya) */
-            --bg-main: #f0f9ff; /* Biru sangat muda (langit cerah) */
-            --glass-bg: rgba(255, 255, 255, 0.7); 
-            --glass-border: rgba(255, 255, 255, 0.9);
-            --primary: #0284c7; /* Sky Blue Tua / Warna Guru */
-            --accent-soft: #7dd3fc; /* Sky Blue Muda */
-            --text-main: #334155; /* Slate Dark */
-            --text-muted: #64748b; /* Slate Medium */
-            --gradient-btn: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%); /* Gradasi Biru Laut */
-            
-            /* Shadow */
-            --shadow-soft: 0 10px 40px -10px rgba(2, 132, 199, 0.15);
-            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            overflow-x: hidden;
-            line-height: 1.6;
-            /* Background pattern geometris tipis */
-            background-image: radial-gradient(#38bdf8 0.5px, transparent 0.5px);
-            background-size: 24px 24px;
-            background-position: 0 0;
+            background-color: #FDFBF7;
+            color: #2D3436;
         }
 
-        /* Background Abstract Blobs (Nuansa Biru) */
-        .ambient-light {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -150px;
-            right: -100px;
-            z-index: -1;
-            filter: blur(60px);
-            animation: floatBlob 10s infinite alternate;
-        }
-        
-        .ambient-light-2 {
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            bottom: -100px;
-            left: -150px;
-            z-index: -1;
-            filter: blur(60px);
-            animation: floatBlob 12s infinite alternate-reverse;
+        /* Decorative Blob Shape for Hero */
+        .blob-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23E8EFEA' d='M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-5.3C93.5,8.6,82.2,21.5,70.6,32.2C59,42.9,47.1,51.4,35,58.8C22.9,66.2,10.6,72.5,-0.9,74C-12.4,75.6,-23.1,72.4,-32.3,64.8C-41.5,57.2,-49.2,45.2,-57.6,33.1C-66,21,-75.1,8.8,-76.4,-4.1C-77.7,-17,-71.2,-30.6,-61.6,-41.6C-52,-52.6,-39.3,-61,-26.4,-68.9C-13.5,-76.8,0.4,-84.2,14.7,-85.1C29,-86,43.3,-80.4,44.7,-76.4Z' transform='translate(100 100)' /%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
         }
 
-        @keyframes floatBlob {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(30px, 50px); }
+        .nav-active {
+            color: #4A6C58;
+            font-weight: 700;
         }
 
-        /* Container Utama */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column-reverse;
-            justify-content: center;
-            align-items: center;
-            gap: 30px; /* Jarak diperkecil sedikit untuk mobile */
-            padding-top: 40px;
-        }
-
-        .hero-content {
-            text-align: center;
-            animation: fadeInUp 1s ease;
-            width: 100%; /* Pastikan full width di mobile */
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 8px 18px;
-            background: #fff;
-            box-shadow: var(--shadow-card);
-            color: var(--primary);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            border: 1px solid rgba(2, 132, 199, 0.2);
-        }
-
-        .hero-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem; /* UKURAN MOBILE (Lebih Kecil) */
-            line-height: 1.2;
-            margin-bottom: 15px;
-            color: #1e293b;
-        }
-        
-        .hero-name span {
-            color: #1e293b; /* GANTI WARNA JADI HITAM */
-            display: inline-block; /* Agar gelar tidak putus aneh */
-            font-size: 0.8em; 
-            font-style: normal; 
-            font-weight: 700; 
-            font-family: 'Playfair Display', serif; /* Ini yang bikin jenis font SAMA */
-        }
-
-        .hero-desc {
-            color: var(--text-muted);
-            font-size: 1rem; /* Sedikit lebih kecil di mobile */
-            max-width: 500px;
-            margin: 0 auto 30px;
-            padding: 0 10px; /* Padding biar ga mepet layar HP */
-        }
-
-        /* Foto dengan Frame Elegan */
-        .hero-image-wrapper {
-            position: relative;
-            width: 260px; /* Sedikit dikecilkan untuk mobile */
-            height: 320px; 
-            animation: fadeInDown 1s ease;
-        }
-
-        .hero-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 100px 100px 20px 20px; /* Arch shape */
-            box-shadow: 20px 20px 0px rgba(56, 189, 248, 0.2); 
-            border: 5px solid #fff;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* --- STATS / INFO CARD --- */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px; /* Gap lebih rapat di mobile */
-            margin: 40px 0;
-            width: 100%;
-        }
-
-        .stat-card {
-            background: #fff;
-            border: 1px solid rgba(255,255,255,0.8);
-            padding: 15px 5px; /* Padding lebih tipis di mobile */
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: var(--shadow-card);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .stat-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: var(--shadow-soft);
-            border-color: var(--accent-soft);
-        }
-
-        .stat-number { font-size: 1.3rem; font-weight: 700; color: var(--primary); display: block;}
-        .stat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;}
-
-        /* --- SERVICES SECTION --- */
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-            color: #1e293b;
-        }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50%;
-            height: 3px;
-            background: var(--primary);
-            margin-top: 5px;
-            border-radius: 2px;
-        }
-        
-        .services {
-            padding: 60px 0;
-        }
-
-        .service-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow-card);
-            border: 1px solid rgba(255,255,255,1);
+        /* Card Hover Effect */
+        .feature-card {
             transition: all 0.3s ease;
         }
-        
-        .service-item:hover {
-            transform: scale(1.02);
-            box-shadow: var(--shadow-soft);
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(74, 108, 88, 0.15);
         }
 
-        .service-icon {
-            font-size: 1.4rem;
-            color: #fff;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-btn);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 16px;
-            box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
-            flex-shrink: 0; /* Biar icon ga kepenyet di HP */
-        }
-
-        .service-info h3 { font-size: 1.1rem; margin-bottom: 5px; color: #1e293b; font-weight: 600; }
-        .service-info p { font-size: 0.85rem; color: var(--text-muted); }
-
-        /* --- CONTACT CTA --- */
-        .cta-section {
-            text-align: center;
-            padding: 50px 20px;
-            background: #fff;
-            border-radius: 40px;
-            margin-bottom: 80px;
-            box-shadow: 0 20px 50px -20px rgba(0,0,0,0.05);
-            border: 1px solid rgba(255,255,255,0.8);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 5px;
-            background: var(--gradient-btn);
-        }
-
-        .main-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--gradient-btn);
-            color: white;
-            padding: 14px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.3);
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-        
-        .secondary-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: white;
-            color: var(--primary);
-            padding: 14px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 20px;
-            border: 2px solid var(--primary);
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .main-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(2, 132, 199, 0.4);
-        }
-        
-        .secondary-btn:hover {
-            background: var(--bg-main);
-            transform: translateY(-3px);
-        }
-
-        /* --- STICKY WHATSAPP --- */
-        .wa-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            z-index: 100;
-            text-decoration: none;
-            transition: all 0.3s;
-            animation: pulse 2s infinite;
-        }
-
-        .wa-float:hover { transform: scale(1.1); }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Desktop Responsive (Media Query untuk Layar Lebar) */
-        @media (min-width: 768px) {
-            .hero {
-                flex-direction: row;
-                text-align: left;
-                justify-content: space-between;
-                padding: 0 50px;
-                gap: 40px;
-            }
-            .hero-content { text-align: left; max-width: 50%; }
-            .hero-name { font-size: 3.5rem; } /* Kembali Besar di Desktop */
-            .hero-desc { margin: 0 0 30px 0; font-size: 1.1rem; padding: 0; }
-            .hero-image-wrapper { width: 350px; height: 450px; }
-            .services { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-            .service-item { margin-bottom: 0; }
-            .stats-grid { gap: 15px; }
-            .stat-number { font-size: 1.5rem; }
-            .section-title { font-size: 2rem; }
-            .main-btn, .secondary-btn { font-size: 1rem; padding: 16px 40px; }
+        /* Image Masking for playful look */
+        .rounded-custom {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
         }
     </style>
 </head>
-<body>
+<body class="font-sans antialiased">
 
-    <!-- Lampu Ambient Background -->
-    <div class="ambient-light"></div>
-    <div class="ambient-light-2"></div>
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-edu-green rounded-full flex items-center justify-center text-white">
+                    <i class="fas fa-book-open text-xs"></i>
+                </div>
+                <span class="text-xl font-serif font-bold text-edu-green tracking-wide">
+                    Bu Guru Aisyah
+                </span>
+            </a>
 
-    <div class="container">
-        
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <div class="hero-content">
-                <span class="badge">Guru Sekolah Dasar</span>
-                <!-- UPDATE: Hapus <br> agar satu baris -->
-                <h1 class="hero-name">Bu Ranti Hastuti, <span>S.Pd.</span></h1>
-                <p class="hero-desc">
-                    Membentuk karakter dan mencerdaskan kehidupan bangsa di <strong>SDN 1 Manyaran, Kediri</strong>. Berdedikasi dalam menciptakan suasana belajar yang menyenangkan dan inspiratif.
+            <!-- Menu -->
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-500">
+                <a href="#home" class="hover:text-edu-green transition">Beranda</a>
+                <a href="#about" class="hover:text-edu-green transition">Profil</a>
+                <a href="#journey" class="hover:text-edu-green transition">Jurnal Mengajar</a>
+                <a href="#gallery" class="hover:text-edu-green transition">Galeri</a>
+            </div>
+
+            <!-- CTA Button -->
+            <a href="#contact" class="hidden md:inline-block px-5 py-2 bg-edu-green text-white rounded-full text-sm font-bold shadow-md hover:bg-green-800 transition transform hover:scale-105">
+                Hubungi Saya
+            </a>
+            
+             <!-- Mobile Menu Button -->
+             <button class="md:hidden text-2xl text-edu-green">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 relative overflow-hidden">
+        <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-12">
+            <!-- Text -->
+            <div class="md:w-1/2 relative z-10">
+                <span class="inline-block px-4 py-1 bg-edu-light text-edu-green rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+                    ASN Berakhlak &inovatif
+                </span>
+                <h1 class="text-5xl md:text-6xl font-serif text-text-dark leading-tight mb-6">
+                    Mendidik Generasi <br>
+                    <span class="text-terracotta italic">Penerus Bangsa</span>
+                </h1>
+                <p class="text-gray-600 text-lg mb-8 leading-relaxed max-w-lg">
+                    Assalamualaikum! Saya Aisyah Humaira, S.Pd. Seorang pendidik muda yang percaya bahwa pembelajaran harus menyenangkan, bermakna, dan relevan dengan zaman.
                 </p>
+                <div class="flex gap-4">
+                    <a href="#about" class="px-8 py-3 bg-edu-green text-white rounded-full font-bold shadow-lg hover:bg-green-800 transition">
+                        Kenalan Yuk!
+                    </a>
+                </div>
+            </div>
+
+            <!-- Image -->
+            <div class="md:w-1/2 relative">
+                <!-- Background Blob SVG -->
+                <div class="absolute top-0 right-0 w-full h-full blob-bg opacity-50 z-0 scale-125 translate-x-10"></div>
                 
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <span class="stat-number">7+</span>
-                        <span class="stat-label">Tahun Mengajar</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Dedikasi</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">Status</span>
-                        <span class="stat-label">Single</span>
-                    </div>
-                </div>
-
-                <!-- Tombol Explore -->
-                <a href="#contact" class="secondary-btn">
-                    Hubungi Saya <i class="fas fa-arrow-down"></i>
-                </a>
-            </div>
-
-            <div class="hero-image-wrapper">
-                <!-- PENTING: Ganti nama file foto menjadi 'foto-profil.png' -->
-                <img src="guru1.png" alt="Bu Ranti Hastuti" class="hero-img">
-            </div>
-        </section>
-
-        <!-- SERVICES / EXPERTISE -->
-        <section class="services">
-            <h2 class="section-title">Fokus Pendidikan</h2>
-            
-            <div class="service-item">
-                <div class="service-icon"><i class="fas fa-shapes"></i></div>
-                <div class="service-info">
-                    <h3>Metode Kreatif</h3>
-                    <p>Penyampaian materi dengan cara interaktif agar siswa tidak mudah bosan.</p>
-                </div>
-            </div>
-
-            <div class="service-item">
-                <div class="service-icon"><i class="fas fa-heart"></i></div>
-                <div class="service-info">
-                    <h3>Pendidikan Karakter</h3>
-                    <p>Membangun akhlak mulia dan kedisiplinan siswa sejak dini.</p>
-                </div>
-            </div>
-
-            <div class="service-item">
-                <div class="service-icon"><i class="fas fa-book-reader"></i></div>
-                <div class="service-info">
-                    <h3>Literasi & Numerasi</h3>
-                    <p>Penguatan kemampuan dasar membaca dan berhitung untuk masa depan.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT CTA -->
-        <section id="contact" class="cta-section">
-            <h2 class="section-title">Tetap Terhubung</h2>
-            <p style="color: var(--text-muted); margin-bottom: 30px;">
-                Untuk konsultasi wali murid atau keperluan dinas, silakan hubungi saya <br>
-                atau kunjungi sekolah kami di jam kerja.
-            </p>
-            
-            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                
-                <!-- TOMBOL MAPS SEKOLAH -->
-                <a href="https://www.google.com/maps/search/?api=1&query=SDN+1+Manyaran+Kediri" target="_blank" class="main-btn" style="background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%); box-shadow: 0 10px 20px rgba(2, 132, 199, 0.3);">
-                    <i class="fas fa-map-marker-alt"></i> Lokasi Sekolah
-                </a>
-
-                <a href="#" class="main-btn" style="background: #fff; color: #333; border: 1px solid #ddd;">
-                    <i class="fas fa-envelope"></i> Email Saya
-                </a>
-            </div>
-        </section>
-
-        <footer style="text-align: center; padding: 20px; font-size: 0.8rem; color: #94a3b8;">
-            &copy; 2025 Ranti Hastuti, S.Pd. - SDN 1 Manyaran.
-        </footer>
-
-    </div>
-
-    <!-- Tombol WhatsApp Melayang (Sticky) -->
-    <!-- Ganti nomor WA di bawah ini -->
-    <a href="https://wa.me/6281234567890" target="_blank" class="wa-float" title="Chat WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- SCRIPT ANIMASI ANGKA -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const counters = document.querySelectorAll('.stat-number');
-            
-            counters.forEach(counter => {
-                const originalText = counter.innerText;
-                const match = originalText.match(/(\d+)(.*)/);
-                
-                if (!match) return;
-
-                const target = parseInt(match[1]); 
-                const suffix = match[2]; 
-                const duration = 2000; 
-                const startTime = performance.now();
-
-                function updateCounter(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const ease = 1 - Math.pow(1 - progress, 4);
-                    const currentCount = Math.floor(ease * target);
+                <!-- FOTO HERO: Cari foto wanita muda berhijab, baju rapi (semi formal/batik/khaki), memegang buku/tablet -->
+                <div class="relative z-10">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop" 
+                         alt="Guru Muda Berhijab" 
+                         class="w-full max-w-md mx-auto rounded-custom shadow-2xl object-cover h-[500px] border-4 border-white">
                     
-                    counter.innerText = currentCount + suffix;
+                    <!-- Floating Badge -->
+                    <div class="absolute bottom-10 -left-4 bg-white p-4 rounded-xl shadow-lg flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+                        <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-500">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 font-bold">Guru Favorit</p>
+                            <p class="text-sm font-serif font-bold text-text-dark">Siswa Kelas X</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.innerText = originalText;
-                    }
-                }
-                requestAnimationFrame(updateCounter);
-            });
-        });
-    </script>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif text-text-dark mb-4">Profil Singkat</h2>
+                <div class="w-20 h-1 bg-terracotta mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Biodata -->
+                <div class="bg-soft-cream p-8 rounded-2xl border border-gray-100 feature-card text-center">
+                    <div class="w-16 h-16 bg-edu-light text-edu-green rounded-full flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-edu-green">Biodata</h3>
+                    <p class="text-gray-600 text-sm mb-1"><strong>Nama:</strong> Aisyah Humaira, S.Pd.</p>
+                    <p class="text-gray-600 text-sm mb-1"><strong>Usia:</strong> 22 Tahun</p>
+                    <p class="text-gray-600 text-sm mb-1"><strong>Status:</strong> CPNS Guru Bahasa Indonesia</p>
+                    <p class="text-gray-600 text-sm"><strong>Lulusan:</strong> Univ. Pendidikan Indonesia (Cumlaude)</p>
+                </div>
+
+                <!-- Card 2: Dedikasi -->
+                <div class="bg-edu-green text-white p-8 rounded-2xl shadow-xl feature-card text-center transform md:-translate-y-4">
+                    <div class="w-16 h-16 bg-white/20 text-white rounded-full flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Filosofi Mengajar</h3>
+                    <p class="text-white/90 leading-relaxed text-sm">
+                        "Setiap anak adalah bintang dengan sinarnya masing-masing. Tugas saya bukan hanya mengisi kepala mereka dengan hafalan, tapi menyalakan api rasa ingin tahu di hati mereka."
+                    </p>
+                </div>
+
+                <!-- Card 3: Keahlian -->
+                <div class="bg-soft-cream p-8 rounded-2xl border border-gray-100 feature-card text-center">
+                    <div class="w-16 h-16 bg-edu-light text-edu-green rounded-full flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-edu-green">Kompetensi</h3>
+                    <ul class="text-gray-600 text-sm space-y-2">
+                        <li><i class="fas fa-check text-terracotta mr-2"></i>Digital Learning (Canva, Quizizz)</li>
+                        <li><i class="fas fa-check text-terracotta mr-2"></i>Public Speaking & MC</li>
+                        <li><i class="fas fa-check text-terracotta mr-2"></i>Kurikulum Merdeka</li>
+                        <li><i class="fas fa-check text-terracotta mr-2"></i>Literasi Digital</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Journey / Gallery -->
+    <section id="gallery" class="py-20 bg-edu-light/30">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h4 class="text-edu-green font-bold uppercase tracking-wider text-sm mb-2">Dokumentasi</h4>
+                    <h2 class="text-3xl md:text-4xl font-serif text-text-dark">Jurnal Kegiatan</h2>
+                </div>
+                <a href="#" class="hidden md:block text-edu-green font-bold hover:underline">Lihat Semua di Instagram <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 h-auto md:h-96">
+                <!-- Foto 1: Mengajar di Kelas (Besar) -->
+                <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-2xl">
+                    <!-- FOTO: Suasana kelas, guru berhijab sedang menerangkan -->
+                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1974&auto=format&fit=crop" 
+                         alt="Mengajar di Kelas" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent text-white">
+                        <h3 class="font-bold text-lg">Interactive Learning</h3>
+                        <p class="text-sm opacity-90">Menggunakan metode diskusi kelompok.</p>
+                    </div>
+                </div>
+
+                <!-- Foto 2: Upacara/Formal (Seragam Korpri/Khaki) -->
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <!-- FOTO: Guru berhijab pakai seragam PNS/Korpri -->
+                    <img src="https://images.unsplash.com/photo-1573166368367-068e36788206?q=80&w=2069&auto=format&fit=crop" 
+                         alt="Kegiatan Upacara" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                     <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/70 to-transparent text-white">
+                        <h3 class="font-bold text-sm">Upacara Senin</h3>
+                    </div>
+                </div>
+
+                <!-- Foto 3: Ekskul/Pramuka -->
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <!-- FOTO: Kegiatan outdoor/pramuka -->
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2132&auto=format&fit=crop" 
+                         alt="Kegiatan Pramuka" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/70 to-transparent text-white">
+                        <h3 class="font-bold text-sm">Pembina Pramuka</h3>
+                    </div>
+                </div>
+
+                <!-- Foto 4: Bersama Siswa (Selfie/Cheerful) -->
+                <div class="md:col-span-2 relative group overflow-hidden rounded-2xl">
+                    <!-- FOTO: Selfie guru cantik dengan murid-murid -->
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2232&auto=format&fit=crop" 
+                         alt="Bersama Siswa" class="w-full h-full object-cover transition duration-500 group-hover:scale-110 object-center">
+                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 to-transparent text-white">
+                        <h3 class="font-bold text-lg">Class Meeting Seru!</h3>
+                        <p class="text-sm opacity-90">Membangun kedekatan emosional dengan siswa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quotes / Motivation -->
+    <section class="py-16 bg-edu-green text-white text-center">
+        <div class="container mx-auto px-6">
+            <i class="fas fa-quote-left text-4xl text-white/30 mb-6"></i>
+            <h3 class="text-2xl md:text-3xl font-serif leading-relaxed max-w-3xl mx-auto mb-6">
+                "Pendidikan adalah senjata paling mematikan di dunia, karena dengan pendidikan, Anda dapat mengubah dunia."
+            </h3>
+            <p class="font-sans font-bold tracking-widest uppercase text-sm">- Nelson Mandela</p>
+        </div>
+    </section>
+
+    <!-- Contact / Socials -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-serif text-text-dark mb-8">Mari Terhubung</h2>
+            <p class="text-gray-600 mb-10 max-w-xl mx-auto">
+                Silakan hubungi saya untuk diskusi seputar pendidikan, undangan seminar, atau kolaborasi mengajar.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-6">
+                <!-- LinkedIn -->
+                <a href="#" class="flex items-center gap-3 px-6 py-4 bg-white border border-gray-200 rounded-xl hover:border-blue-600 hover:text-blue-600 shadow-sm hover:shadow-md transition group">
+                    <i class="fab fa-linkedin text-2xl text-gray-400 group-hover:text-blue-600"></i>
+                    <span class="font-bold">LinkedIn</span>
+                </a>
+                
+                <!-- Instagram -->
+                <a href="#" class="flex items-center gap-3 px-6 py-4 bg-white border border-gray-200 rounded-xl hover:border-pink-600 hover:text-pink-600 shadow-sm hover:shadow-md transition group">
+                    <i class="fab fa-instagram text-2xl text-gray-400 group-hover:text-pink-600"></i>
+                    <span class="font-bold">Instagram</span>
+                </a>
+
+                <!-- TikTok (Populer untuk guru muda) -->
+                <a href="#" class="flex items-center gap-3 px-6 py-4 bg-white border border-gray-200 rounded-xl hover:border-black hover:text-black shadow-sm hover:shadow-md transition group">
+                    <i class="fab fa-tiktok text-2xl text-gray-400 group-hover:text-black"></i>
+                    <span class="font-bold">TikTok Edu</span>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:aisyah.guru@email.com" class="flex items-center gap-3 px-6 py-4 bg-white border border-gray-200 rounded-xl hover:border-red-600 hover:text-red-600 shadow-sm hover:shadow-md transition group">
+                    <i class="fas fa-envelope text-2xl text-gray-400 group-hover:text-red-600"></i>
+                    <span class="font-bold">Email Dinas</span>
+                </a>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-gray-100 text-sm text-gray-400">
+                <p>&copy; 2024 Aisyah Humaira. Dibuat dengan cinta untuk pendidikan Indonesia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition z-50">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
 
 </body>
 </html>
